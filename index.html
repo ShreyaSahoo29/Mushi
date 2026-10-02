@@ -1,215 +1,328 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MUSHI // BIRTHDAY QUEST</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Private Website</title>
+
+    <style>
+        /* =========================================
+           PASSWORD SCREEN
+        ========================================= */
+
+        #loginScreen {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            background: #ffffff;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            z-index: 999999;
+        }
+
+        .login-box {
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        .login-box h2 {
+            margin-bottom: 20px;
+        }
+
+        #passwordInput {
+            width: 100%;
+            box-sizing: border-box;
+
+            padding: 14px;
+            font-size: 16px;
+
+            border: 1px solid #ccc;
+            border-radius: 8px;
+
+            outline: none;
+        }
+
+        #passwordInput:focus {
+            border-color: #555;
+        }
+
+        #loginButton {
+            margin-top: 12px;
+
+            padding: 12px 25px;
+
+            font-size: 16px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: #000000;
+            color: white;
+
+            cursor: pointer;
+        }
+
+        #loginButton:hover {
+            opacity: 0.8;
+        }
+
+        #errorMessage {
+            display: none;
+
+            margin-top: 12px;
+
+            color: red;
+            font-size: 14px;
+        }
+
+
+        /* =========================================
+           PROTECTED PAGE
+        ========================================= */
+
+        #protectedContent {
+            display: none;
+        }
+    </style>
 </head>
+
+
 <body>
-<div id="scanlines"></div>
-<div id="cursorGlow"></div>
 
-<header class="topbar">
-  <div class="brand"><span class="dot"></span> BUNNY // MUSHI</div>
-  <div class="status">CLASSIFIED • LOVE OPERATION</div>
-  <button id="musicBtn" class="tiny-btn">♫ AJAB SI: OFF</button>
-</header>
 
-<main>
-<section class="hero panel">
-  <div class="hero-copy">
-    <div class="eyebrow">PLAYER 001 // ADITYA AKSHAT</div>
-    <h1>HEY, <span>MUSHI.</span></h1>
-    <p class="subtitle">Your birthday isn't a date. It's a mission.</p>
-    <p class="intro">Bunny has prepared a classified little universe for the coder, gamer, king, traveller, horror-lover and professional snack thief she loves.</p>
-    <div class="hero-actions">
-      <button class="primary" onclick="scrollToId('mission')">START MISSION →</button>
-      <button class="ghost" onclick="scrollToId('letter')">OPEN BUNNY'S LETTER ♡</button>
+    <!-- =========================================
+         PASSWORD / SIGN-IN SCREEN
+    ========================================= -->
+
+    <div id="loginScreen">
+
+        <div class="login-box">
+
+            <h2>Enter Password</h2>
+
+            <input
+                type="password"
+                id="passwordInput"
+                placeholder="Password"
+                autocomplete="off"
+            >
+
+            <button id="loginButton" onclick="checkPassword()">
+                Sign In
+            </button>
+
+            <div id="errorMessage">
+                Password is incorrect.
+            </div>
+
+        </div>
+
     </div>
-  </div>
-  <div class="hero-card">
-    <div class="radar"></div>
-    <div class="king-badge">♛</div>
-    <div class="mini-label">CURRENT TITLE</div>
-    <div class="big-label">THE KING</div>
-    <div class="tiny-label">GOOGLE ARC // IN PROGRESS</div>
-  </div>
-</section>
 
-<section id="mission" class="section">
-  <div class="section-head">
-    <span>01 / MISSION CONTROL</span><h2>THE ROAD TO <em>23 OCT</em></h2>
-  </div>
-  <div class="count-grid">
-    <div class="count-card"><span id="days">--</span><small>DAYS</small></div>
-    <div class="count-card"><span id="hours">--</span><small>HOURS</small></div>
-    <div class="count-card"><span id="minutes">--</span><small>MINUTES</small></div>
-    <div class="count-card"><span id="seconds">--</span><small>SECONDS</small></div>
-  </div>
-  <div class="streak-panel">
-    <div>
-      <div class="mini-label">DAILY BIRTHDAY STREAK</div>
-      <h3 id="streakTitle">LOCK IN, KING.</h3>
-      <p id="streakText">Come back every day and claim one mission. The closer you get, the more Bunny reveals.</p>
+
+
+    <!-- =========================================
+         YOUR ACTUAL WEBSITE
+         
+         EVERYTHING INSIDE THIS DIV IS HIDDEN
+         UNTIL THE CORRECT PASSWORD IS ENTERED.
+    ========================================= -->
+
+    <div id="protectedContent">
+
+
+        <!-- ==================================================
+             PUT YOUR EXISTING HTML CODE HERE
+             
+             EXAMPLE:
+        ================================================== -->
+
+        <h1>Welcome to my website!</h1>
+
+        <p>
+            If you can see this page, the password was correct.
+        </p>
+
+
+        <!-- ==================================================
+             YOUR EXISTING CODE GOES HERE
+             
+             Replace the example above with your actual
+             website/page code.
+        ================================================== -->
+
+
     </div>
-    <div class="streak-right">
-      <div class="streak-number"><span id="streak">0</span><small> DAYS</small></div>
-      <button class="primary" id="claimBtn">CLAIM TODAY'S MISSION</button>
-    </div>
-  </div>
-  <div class="reveal-grid" id="revealGrid"></div>
-</section>
 
-<section class="section">
-  <div class="section-head"><span>02 / PLAYER PROFILE</span><h2>MUSHI'S <em>LOADOUT</em></h2></div>
-  <div class="loadout-grid">
-    <div class="agent-card omen"><div class="agent-icon">◉</div><h3>OMEN</h3><p>Shadow main energy. Mysterious. Tactical. Slightly terrifying.</p></div>
-    <div class="agent-card chamber"><div class="agent-icon">⌁</div><h3>CHAMBER</h3><p>Because apparently looking cool while winning is part of the mission.</p></div>
-    <div class="agent-card viper"><div class="agent-icon">☣</div><h3>VIPER</h3><p>For when the battlefield needs a little poison.</p></div>
-  </div>
-  <div class="likes-strip">
-    <span>🎮 GAMING</span><span>🦇 BATMAN</span><span>🐉 RAYQUAZA</span><span>💻 CODING</span><span>🔎 GOOGLE DREAM</span><span>🏔️ TRIPS WITH BUNNY</span><span>🍛 BUNNY'S FOOD</span><span>👑 KING MODE</span>
-  </div>
-</section>
 
-<section class="section family">
-  <div class="section-head"><span>03 / PARTY</span><h2>THE <em>CHAOS FAMILY</em></h2></div>
-  <div class="family-grid">
-    <div class="family-card family-photo-card">
-      <div class="plush-photo"><img src="assets/our-kids.jpeg" alt="Chiggy and Mochi together"></div>
-      <div><span class="tag">THE KIDS</span><h3>CHIGGY + MOCHI</h3><p>One penguin son. One yellow unicorn daughter. The tiny chaos department of Bunny &amp; Mushi.</p></div>
-    </div>
-    <div class="family-card family-card-note">
-      <div class="plush-placeholder penguin">🐧</div>
-      <div><span class="tag">SON + DAUGHTER</span><h3>FAMILY FILE</h3><p>Officially stuffed toys. Emotionally? Your children. No appeals accepted.</p></div>
-    </div>
-  </div>
-  <p class="family-note">They may be stuffed toys. They are still your children. Bunny has the paperwork. Mushi has the emotional custody.</p>
-</section>
 
-<section class="section games">
-  <div class="section-head"><span>04 / ARCADE</span><h2>PROVE YOU DESERVE <em>THE CROWN</em></h2></div>
-  <div class="game-tabs">
-    <button class="game-tab active" data-game="code">CODE LOCK</button>
-    <button class="game-tab" data-game="mood">MOOD CHECK</button>
-    <button class="game-tab" data-game="king">KILL THE EVIL KING</button>
-  </div>
+    <!-- =========================================
+         PASSWORD CHECKING JAVASCRIPT
+    ========================================= -->
 
-  <div id="codeGame" class="game-box">
-    <div class="game-title">ACCESS NODE // BUNNY-LOVE</div>
-    <p>Decode the three-letter password. Hint: it's what Bunny calls you.</p>
-    <div class="code-row">
-      <input id="codeInput" maxlength="5" placeholder="TYPE CODE">
-      <button class="primary" onclick="checkCode()">UNLOCK</button>
-    </div>
-    <div id="codeResult" class="game-result"></div>
-  </div>
+    <script>
 
-  <div id="moodGame" class="game-box hidden">
-    <div class="game-title">EMOTIONAL TELEMETRY</div>
-    <p>How are you feeling right now, King?</p>
-    <div class="slider-wrap"><input id="mood" type="range" min="0" max="100" value="70"><div class="slider-labels"><span>👻 DEAD INSIDE</span><span>👑 KING</span></div></div>
-    <button class="primary" onclick="submitMood()">SEND TO BUNNY</button>
-    <div id="moodResult" class="game-result"></div>
-  </div>
+        /*
+         * ==================================================
+         * SET YOUR PASSWORD HERE
+         * ==================================================
+         *
+         * Change ONLY the text between the quotation marks.
+         *
+         * Example:
+         *
+         * const correctPassword = "123456";
+         *
+         */
 
-  <div id="kingGame" class="game-box hidden king-game">
-    <div class="game-title">BOSS FIGHT // THE EVIL KING</div>
-    <p>Click the evil king before he reaches Bunny. You have 15 seconds.</p>
-    <div class="boss-arena" id="arena"><div id="boss">♛</div><div id="hitCount">HITS: 0</div><div id="timer">15</div></div>
-    <button class="primary" id="startBoss">START BOSS FIGHT</button>
-    <div id="bossResult" class="game-result"></div>
-  </div>
-</section>
+        const correctPassword = "abcd";
 
-<section class="section gallery">
-  <div class="section-head"><span>05 / MEMORY ARCHIVE</span><h2>US, <em>IN FRAMES</em></h2></div>
-  <div class="photo-grid personal-gallery">
-    <figure class="photo-card photo-tall"><img src="assets/mushi-01.jpeg" alt="Mushi under pink bougainvillea"><figcaption>my handsome boy, just existing beautifully ♡</figcaption></figure>
-    <figure class="photo-card photo-wide"><img src="assets/mushi-03.jpeg" alt="Mushi at a cafe"><figcaption>the glasses. the smile. the whole problem.</figcaption></figure>
-    <figure class="photo-card"><img src="assets/mushi-05.jpeg" alt="Mushi at the beach"><figcaption>every trip is better with you.</figcaption></figure>
-    <figure class="photo-card"><img src="assets/mushi-06.jpeg" alt="Mushi smiling with Chiggy and Mochi"><figcaption>dad of Chiggy &amp; Mochi ♡</figcaption></figure>
-    <figure class="photo-card photo-wide"><img src="assets/mushi-04.jpeg" alt="Mushi close-up"><figcaption>yes, Bunny is completely obsessed.</figcaption></figure>
-    <figure class="photo-card"><img src="assets/mushi-02.jpeg" alt="Mushi posing"><figcaption>King mode: permanently activated.</figcaption></figure>
-  </div>
-  <p class="upload-note">ARCHIVE 001–006 // six reasons Bunny keeps staring at your pictures.</p>
-</section>
 
-<section class="section iconic">
-  <div class="section-head"><span>06 / SHARED MEMORY ARCHIVE</span><h2>THE <em>ICONIC US</em> FILES</h2></div>
-  <p class="memory-intro">Every one of these pictures means something. Bunny may not label the whole story here, because Mushi already knows what each moment means. This is simply your little wall of <strong>us</strong>.</p>
-  <div class="couple-grid">
-    <figure class="couple-card hero-memory"><img src="assets/us-01.jpeg" alt="Bunny and Mushi together"><figcaption><span>MEMORY 01</span> the beginning of another little adventure ♡</figcaption></figure>
-    <figure class="couple-card"><img src="assets/us-02.jpeg" alt="Bunny and Mushi at a cafe"><figcaption><span>MEMORY 02</span> ordinary day, extraordinary us.</figcaption></figure>
-    <figure class="couple-card"><img src="assets/us-03.jpeg" alt="Bunny and Mushi kissing"><figcaption><span>MEMORY 03</span> no explanation required.</figcaption></figure>
-    <figure class="couple-card tall-memory"><img src="assets/us-04.jpeg" alt="Bunny and Mushi outdoors"><figcaption><span>MEMORY 04</span> somewhere beautiful, with my favourite person.</figcaption></figure>
-    <figure class="couple-card"><img src="assets/us-05.jpeg" alt="Bunny and Mushi together"><figcaption><span>MEMORY 05</span> one more moment I would choose again.</figcaption></figure>
-    <figure class="couple-card"><img src="assets/us-06.jpeg" alt="Bunny and Mushi together at night"><figcaption><span>MEMORY 06</span> my favourite kind of close.</figcaption></figure>
-  </div>
-</section>
+        /*
+         * ==================================================
+         * CHECK PASSWORD
+         * ==================================================
+         */
 
-<section class="section trip">
-  <div class="section-head"><span>07 / CLASSIFIED TRIP</span><h2>DESTINATION: <em>REDACTED</em></h2></div>
-  <div class="trip-card">
-    <div class="mountain-art">▲ ▲ ▲<br><span>?????</span><br>▲ ▲ ▲</div>
-    <div>
-      <div class="tag">BIRTHDAY OPERATION</div>
-      <h3>A HILL STATION IS WAITING.</h3>
-      <p>You already know we're going on a birthday trip. You do <strong>not</strong> know where.</p>
-      <p>Every streak unlocks another clue. On 23 October, the final location can be revealed.</p>
-      <div id="clueText" class="clue">CLUE 0 // CLASSIFIED</div>
-    </div>
-  </div>
-</section>
+        function checkPassword() {
 
-<section id="letter" class="section letter-section">
-  <div class="section-head"><span>08 / PRIVATE TRANSMISSION</span><h2>FROM <em>BUNNY</em></h2></div>
-  <div class="letter-stage">
-    <div class="running-plush chiggy-run">🐧</div>
-    <div class="running-plush mochi-run">🦄</div>
-    <div class="letter-photo"><img src="assets/us-01.jpeg" alt="Bunny and Mushi together"><div class="photo-stamp">OUR FAVOURITE MEMORY ♡</div></div>
-    <article class="letter">
-<div class="letter-top">TO MY DEAREST MUSHI ♡</div>
-<p>To my dearest Mushi,</p>
-<p>Happy Boyfriend Day!</p>
-<p>I’m sitting here writing this and looking at your pictures, and honestly, it’s not even fair how insanely handsome you are. Like, actually the most handsome boy on this entire planet, no debate. You’re my king, my absolute favorite person to ever exist, and I just needed to put all of this into words so you can look at this website and remember how completely obsessed with you I am.</p>
-<p>There is nothing in the world I love more than the life we share. I love cooking for you and just watching you eat with that happy face, it genuinely makes my whole day. I love every single trip we take together, packing our bags, getting away from the city chaos, exploring new corners, watching the stars, and just having you all to myself. Traveling with you is pure magic because anywhere with you feels like home. And now, with your birthday coming up this month, my heart is literally doing flips. Our birthday trip is going to be so special, Mushi. I have so much love, warmth, and so many little plans saved up for you. You better be fully ready for all of it.</p>
-<p>Whenever life gets loud and overwhelming, you are my silence and my peace. When you wrap your arms around me and softly call me Bunny, everything else just fades into the background. You handle my drama, my overthinking, and my crazy moods with so much gentleness that sometimes I just want to pause time and live right there in your hugs. I don&#x27;t just love you. I look up to you, I adore you, and I am so endlessly proud of the man you are.</p>
-<div class="poem">
-<p>Chahe kitni bhi bheed ho duniya mein, mera sukoon bs tum ho,</p>
-<p>Jab bhi dheere se Bunny bulate ho, saare dukh mere gum ho.</p>
-<p>Wo tumhara haath thaam kar nayi jagah ghoomna, raaton ko taare dekhna,</p>
-<p>Tumhare liye pyaar se khana banana, aur bs tumhari smile pe rukna.</p>
-<p>Duniya ke sabse handsome ladke ho, mere dil ke eklaute king,</p>
-<p>Tumhari baahon mein aate hi lagta hai, I have literally everything.</p>
-<p>Ab birthday month aa gya hai tumhara, trip ki taiyari poori rakhna,</p>
-<p>Har saal, har janam mein Mushi, bs mere ban kar hi rehna.</p>
-</div>
-<p>I want to be with you through every trip, every quiet evening, every milestone, and every silly little fight. Thank you for loving me so softly and making me feel like the luckiest girl alive.</p>
-<p>Happy Boyfriend Day, my handsome boy. You’re stuck with me forever, no returns allowed.<br>Always and forever yours,<br>Your Bunny</p>
-</article>
-  </div>
-</section>
+            // Get the password entered by the user
+            const enteredPassword =
+                document.getElementById("passwordInput").value;
 
-<section class="finale">
-  <div class="glitch">MISSION STATUS: <span>LOVE</span></div>
-  <h2>HAPPY BOYFRIEND'S DAY,<br><em>MUSHI.</em></h2>
-  <p>23 OCT // THE KING'S NEXT LEVEL</p>
-  <button class="primary" onclick="triggerScare()">ONE LAST SURPRISE</button>
-</section>
-</main>
 
-<div id="scare" class="scare hidden">
-  <div class="scare-face">☠</div>
-  <div class="scare-text">YOU SHOULDN'T HAVE CLICKED THAT.</div>
-  <button onclick="closeScare()">RUN BACK TO BUNNY</button>
-</div>
+            // Get the different page elements
+            const loginScreen =
+                document.getElementById("loginScreen");
 
-<div id="toast"></div>
-<audio id="song" loop preload="auto"><source src="assets/ajab-si.mp3" type="audio/mpeg"></audio>
-<script src="script.js"></script>
+            const protectedContent =
+                document.getElementById("protectedContent");
+
+            const errorMessage =
+                document.getElementById("errorMessage");
+
+            const passwordInput =
+                document.getElementById("passwordInput");
+
+
+            /*
+             * Compare the password entered by the user
+             * with the password written in the code.
+             */
+
+            if (enteredPassword === correctPassword) {
+
+                // ------------------------------------------
+                // PASSWORD IS CORRECT
+                // ------------------------------------------
+
+                loginScreen.style.display = "none";
+
+                protectedContent.style.display = "block";
+
+                errorMessage.style.display = "none";
+
+            }
+
+            else {
+
+                // ------------------------------------------
+                // PASSWORD IS WRONG
+                // ------------------------------------------
+
+                errorMessage.style.display = "block";
+
+                // Empty the password box
+                passwordInput.value = "";
+
+                // Put the cursor back in the password box
+                passwordInput.focus();
+
+            }
+
+        }
+
+
+        /*
+         * ==================================================
+         * PRESS ENTER TO SIGN IN
+         * ==================================================
+         */
+
+        document
+            .getElementById("passwordInput")
+            .addEventListener("keydown", function(event) {
+
+                if (event.key === "Enter") {
+
+                    checkPassword();
+
+                }
+
+            });
+
+
+        /*
+         * ==================================================
+         * AUTOMATICALLY FOCUS PASSWORD BOX
+         * ==================================================
+         */
+
+        window.addEventListener("load", function() {
+
+            document
+                .getElementById("passwordInput")
+                .focus();
+
+        });
+
+    </script>
+
+
 </body>
+
 </html>
+```
+
+### What you need to change
+
+Find this:
+
+```javascript
+const correctPassword = "YOUR_PASSWORD";
+```
+
+and change it to, for example:
+
+```javascript
+const correctPassword = "Shreya123";
+```
+
+Then put **your entire existing webpage** inside:
+
+```html
+<div id="protectedContent">
+
+    <!-- YOUR EXISTING CODE -->
+
+</div>
+```
+
+So when someone visits:
+
+**1.** They see only the password screen.
+**2.** They enter the password.
+**3.** If it matches → the password screen disappears and your entire page appears.
+**4.** If it doesn't match → `Password is incorrect.` appears and the box is cleared.
+**5.** They can also press **Enter** instead of clicking Sign In.
+
+One thing to keep in mind: because this is **pure HTML/CSS/JavaScript**, the password is visible to anyone who inspects the page source. It's suitable for hiding a personal/surprise webpage, but not for genuinely securing confidential data.
